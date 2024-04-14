@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+</head>
+
+<body style="background-color: black; color: white;">
+    <ol class="language">
+        <li>Javascript</li>
+    </ol>
+</body>
+<script>
+    // add 2 ways, first is not so optimized, second is
+    function addLanguage(langName) {
+        const li = document.createElement('li')
+        li.innerHTML = `${langName}`
+        document.querySelector(".language").appendChild(li)
+    }
+
+    function addOptimizedLang(langName) {
+        const li = document.createElement("li")
+        li.style.color = "red"
+        li.style.fontWeight = "bold"
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector(".language").appendChild(li)
+    }
+    addOptimizedLang("React JS")
+
+    // update 3 ways, dont have much difference for optimization in below 3 ways
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // secondLang.innerHTML = "Python"
+
+    const newli = document.createElement('li')
+    newli.textContent = "Java"
+    secondLang.replaceWith(newli)
+
+
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = "<li>TypeScript</li>"
+
+    // remove
+    const lastLang = document.querySelector("li:last-child")
+    lastLang.remove()
+
+</script>
+
+</html>
